@@ -1,5 +1,6 @@
 import 'package:employee_attendance/screens/login_screen.dart';
 import 'package:employee_attendance/screens/splash_screen.dart';
+import 'package:employee_attendance/services/attendance_service.dart';
 import 'package:employee_attendance/services/auth_service.dart';
 import 'package:employee_attendance/services/db_service.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => DbService()),
+        ChangeNotifierProvider(create: (context) => AttendanceService()),
       ],
       child: MaterialApp(
         title: 'Employee Attendance',
