@@ -1,5 +1,7 @@
 import 'package:employee_attendance/screens/register_screen.dart';
+import 'package:employee_attendance/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -35,7 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
               children: const [
                 Icon(
                   Icons.qr_code_scanner,
-                 color: Colors.white,
+                  color: Colors.white,
+                  size: 72,
                 ),
                 const SizedBox(height: 20),
                 Text(
@@ -75,25 +78,39 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                 ),
                 const SizedBox(height: 30),
-                SizedBox(
-                  height: 60,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)
+                Consumer<AuthService>(
+                  builder: (context, authServiceProvider, child)  {
+                    return SizedBox(
+                      height: 60,
+                      width: double.infinity,
+                      child: authServiceProvider.isLoading
+                          ? const Center(
+                        child: CircularProgressIndicator(),
                       )
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
+                          : ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.redAccent,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)
+                            )
+                        ),
+                        onPressed: () {
+                          authServiceProvider.loginEmployee(
+                              _emailcontroller.text.trim(),
+                              _passwordController.text.trim(),
+                              context
+                          );
+                        },
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
                 TextButton(
