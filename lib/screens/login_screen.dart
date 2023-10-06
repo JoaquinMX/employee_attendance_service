@@ -11,7 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -58,12 +58,13 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 TextField(
+                  keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     label: Text("Employee Email ID"),
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(),
                   ),
-                  controller: _emailcontroller,
+                  controller: _emailController,
                 ),
                 const SizedBox(
                   height: 20,
@@ -96,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onPressed: () {
                           authServiceProvider.loginEmployee(
-                              _emailcontroller.text.trim(),
+                              _emailController.text.trim(),
                               _passwordController.text.trim(),
                               context
                           );
