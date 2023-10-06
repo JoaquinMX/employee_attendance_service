@@ -1,14 +1,13 @@
-import 'package:employee_attendance/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -18,16 +17,20 @@ class _LoginScreenState extends State<LoginScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        elevation: 0,
+      ),
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           Container(
-            height: screenHeight / 3,
+            height: screenHeight / 4,
             width: screenWidth,
             decoration: const BoxDecoration(
-             color: Colors.redAccent,
+              color: Colors.redAccent,
               borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(70)
+                  bottomRight: Radius.circular(70)
               ),
             ),
             child: Column(
@@ -35,15 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
               children: const [
                 Icon(
                   Icons.qr_code_scanner,
-                 color: Colors.white,
+                  color: Colors.white,
                 ),
                 const SizedBox(height: 20),
                 Text(
                   "The Company",
                   style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
                   ),
                 ),
               ],
@@ -80,31 +83,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)
-                      )
+                        backgroundColor: Colors.redAccent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)
+                        )
                     ),
                     onPressed: () {},
                     child: const Text(
-                      "Login",
+                      "Register",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RegisterScreen()));
-                  },
-                  child: Text(
-                    "Are you a new Employee? Regiser here"
-                  )
                 )
               ],
             ),
