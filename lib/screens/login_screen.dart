@@ -26,8 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             height: screenHeight / 3,
             width: screenWidth,
-            decoration: const BoxDecoration(
-             color: Colors.redAccent,
+            decoration: BoxDecoration(
+             color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(70)
               ),
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                           : ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.redAccent,
+                            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)
                             )

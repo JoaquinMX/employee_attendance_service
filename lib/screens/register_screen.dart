@@ -20,7 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Register User",
           style: TextStyle(
               fontSize: 25,
@@ -28,10 +28,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               fontWeight: FontWeight.bold
           ),
         ),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white
         ),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         elevation: 0,
       ),
       resizeToAvoidBottomInset: false,
@@ -40,21 +40,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Container(
             height: screenHeight / 4,
             width: screenWidth,
-            decoration: const BoxDecoration(
-              color: Colors.redAccent,
-              borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(70)
               ),
             ),
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Icon(
                   Icons.qr_code_scanner,
                   color: Colors.white,
                   size: 72,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
                 Text(
                   "The Company",
                   style: TextStyle(
@@ -68,7 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           const SizedBox(height: 50),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 TextField(
@@ -103,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           )
                           : ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.redAccent,
+                            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)
                             )

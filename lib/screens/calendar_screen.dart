@@ -45,7 +45,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     String pickedMonth = DateFormat("MMMM yyyy").format(selectedDate);
                     attendanceService.attendanceHistoryMonth = pickedMonth;
                   },
-                  child: const Text("Pick a month")
+                  child: Text(
+                      "Pick a month",
+                    style: TextStyle(
+                      color: Theme.of(context).textTheme.bodyMedium!.color
+                    ),
+                  )
               ),
             ],
           ),
@@ -80,7 +85,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                 Expanded(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.redAccent,
+                                      color: Theme.of(context).colorScheme.primaryContainer,
                                       borderRadius: BorderRadius.all(Radius.circular(20)),
                                     ),
                                     child: Center(

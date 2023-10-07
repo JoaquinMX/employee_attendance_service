@@ -25,6 +25,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const primary = Colors.blueAccent;
+    const textColor = Colors.black;
+    const secondaryTextColor = Colors.black54;
+    const backgroundColor = Color(0xFFF5F5F5);
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthService()),
@@ -35,7 +40,15 @@ class MyApp extends StatelessWidget {
         title: 'Employee Attendance',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: primary,
+              primaryContainer: primary,
+          ),
+          scaffoldBackgroundColor: backgroundColor,
+          textTheme: Theme.of(context).textTheme.apply(
+            displayColor: secondaryTextColor,
+            bodyColor: textColor,
+          ),
           useMaterial3: true,
         ),
         home: const SplashScreen(),

@@ -33,10 +33,10 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
             Container(
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(top: 32),
-              child: const Text(
+              child: Text(
                 "Welcome!",
                 style: TextStyle(
-                  color: Colors.black54,
+                  color: Theme.of(context).textTheme.displayMedium!.color,
                   fontSize: 30
                 ),
               ),
@@ -104,11 +104,11 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             "Check in",
                             style: TextStyle(
                               fontSize: 20,
-                              color: Colors.black54,
+                              color: Theme.of(context).textTheme.displayMedium!.color,
                             ),
                           ),
                           const SizedBox(
@@ -129,11 +129,11 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             "Check out",
                             style: TextStyle(
                               fontSize: 20,
-                              color: Colors.black54,
+                              color: Theme.of(context).textTheme.displayMedium!.color,
                             ),
                           ),
                           const SizedBox(
@@ -168,9 +168,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     DateFormat("hh:mm:ss a").format(DateTime.now()),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 15,
-                      color: Colors.black54
+                      color: Theme.of(context).textTheme.displayMedium!.color
                     ),
                   ),
                 );
@@ -184,12 +184,12 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     text: attendanceService.attendanceModel?.checkIn == null
                         ? "Slide to Check in"
                         : "Slide to Check out",
-                    textStyle: const TextStyle(
-                      color: Colors.black54,
+                    textStyle: TextStyle(
+                      color: Theme.of(context).textTheme.displayMedium!.color,
                       fontSize: 18,
                     ),
                     outerColor: Colors.white,
-                    innerColor: Colors.redAccent,
+                    innerColor: Theme.of(context).colorScheme.primaryContainer,
                     key: key,
                     onSubmit: () async {
                       await attendanceService.markAttendance(context);
