@@ -1,13 +1,17 @@
 import 'dart:math';
 
 import 'package:employee_attendance/constants/constants.dart';
+import 'package:employee_attendance/models/department.dart';
 import 'package:employee_attendance/models/user_model.dart';
+import 'package:employee_attendance/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DbService extends ChangeNotifier {
   final SupabaseClient _supabaseClient = Supabase.instance.client;
   UserModel? userModel;
+  List<DepartmentModel> allDepartments = [];
+  int? employeeDepartment;
 
   String generateRandomEmployeeId() {
     final random = Random();
@@ -35,9 +39,38 @@ class DbService extends ChangeNotifier {
         .from(Constants.employeeTable)
         .select()
         .eq("id", _supabaseClient.auth.currentUser!.id).single();
-    print("UserData $userData");
     userModel = UserModel.fromJson(userData);
-    print("User model $userModel");
+    // Just modify the department value if is null
+    employeeDepartment == null
+      ? employeeDepartment = userModel?.department
+      : null;
     return userModel!;
+  }
+
+  Future<void> getAllDepartments() async {
+    final List result = await _supabaseClient
+        .from(Constants.departmentTable)
+        .select();
+    allDepartments = result.map((department) => DepartmentModel.fromJson(department)).toList();
+    notifyListeners();
+  }
+
+  Future updateProfile(String name, BuildContext context) async {
+    await _supabaseClient
+        .from(Constants.employeeTable)
+        .update({
+          'name': name,
+          'department': employeeDepartment
+        })
+        .eq('id', _supabaseClient.auth.currentUser!.id);
+
+    Utils.showSnackBar("Profile updated succesfully", context, color: Colors.green);
+    notifyListeners();
+  }
+
+  clearData() {
+    userModel = null;
+    employeeDepartment = null;
+    notifyListeners();
   }
 }

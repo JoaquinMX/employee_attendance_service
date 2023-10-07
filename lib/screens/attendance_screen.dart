@@ -48,7 +48,6 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         UserModel user = snapshot.data!;
-                        print(user.toString());
                         return Container(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -64,7 +63,10 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       else {
                         return const SizedBox(
                           width: 60,
-                          child: LinearProgressIndicator(),
+                          child: Padding(
+                            padding: EdgeInsets.all(12.0),
+                            child: LinearProgressIndicator(),
+                          ),
                         );
                       }
                     },

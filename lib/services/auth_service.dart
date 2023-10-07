@@ -1,3 +1,4 @@
+import 'package:employee_attendance/models/user_model.dart';
 import 'package:employee_attendance/services/db_service.dart';
 import 'package:employee_attendance/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +43,11 @@ class AuthService extends ChangeNotifier {
       if (email == "" || password == "") {
         throw ("All fields are required");
       }
-      final AuthResponse response = await _supabaseClient.auth.signInWithPassword(
+      await _supabaseClient.auth.signInWithPassword(
           email: email,
           password: password
       );
+
       setIsLoading = false;
     } catch (e) {
       setIsLoading = false;
@@ -54,6 +56,7 @@ class AuthService extends ChangeNotifier {
   }
 
   Future signOut() async {
+    _dbService.clearData();
     await _supabaseClient.auth.signOut();
     notifyListeners();
   }
