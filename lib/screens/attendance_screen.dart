@@ -1,6 +1,5 @@
 import 'package:employee_attendance/models/user_model.dart';
 import 'package:employee_attendance/services/attendance_service.dart';
-import 'package:employee_attendance/services/auth_service.dart';
 import 'package:employee_attendance/services/db_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -106,7 +105,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const Text(
-                            "Check In",
+                            "Check in",
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black54,
@@ -131,7 +130,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const Text(
-                            "Check Out",
+                            "Check out",
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black54,
@@ -183,7 +182,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 builder: (context) {
                   return SlideAction(
                     text: attendanceService.attendanceModel?.checkIn == null
-                        ? "Slide to Check In"
+                        ? "Slide to Check in"
                         : "Slide to Check out",
                     textStyle: const TextStyle(
                       color: Colors.black54,
