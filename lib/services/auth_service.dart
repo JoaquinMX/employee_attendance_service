@@ -47,7 +47,6 @@ class AuthService extends ChangeNotifier {
           email: email,
           password: password
       );
-
       setIsLoading = false;
     } catch (e) {
       setIsLoading = false;
@@ -56,7 +55,7 @@ class AuthService extends ChangeNotifier {
   }
 
   Future signOut() async {
-    _dbService.clearData();
+    //_dbService.clearData();
     await _supabaseClient.auth.signOut();
     notifyListeners();
   }
